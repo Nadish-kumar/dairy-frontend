@@ -1,0 +1,20 @@
+.login__left {
+  width: 100%;
+}
+.login__logo {
+  width: 140px;
+  height: 120px;
+  text-align: center;
+}
+.login__right {
+  text-align: center;
+}
+.heading {
+  font-size: 30px;
+  font-weight: 600;
+}
+.subheading {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
