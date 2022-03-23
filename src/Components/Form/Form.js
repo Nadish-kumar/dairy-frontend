@@ -3,18 +3,9 @@ import "../../assests/Css/Form.css";
 import { useFormik } from "formik";
 import axios from "axios";
 import { useState } from "react";
-import storage from "../../Database/firebase";
 
 const Form = () => {
   const [image, setImage] = useState("");
-
-  const upload = () => {
-    if (image == null) return;
-    storage
-      .ref(`/images/${image.name}`)
-      .put(image)
-      .on("state_changed", alert("success"), alert);
-  };
 
   return (
     <div className="container-fluid form__content">
@@ -23,7 +14,7 @@ const Form = () => {
           <p>Create your Memories</p>
         </div>
       </div>
-      <form onSubmit={formik.handleSubmit}>
+      <form>
         <div className="row inputboxes">
           <div className="col-lg-3"></div>
           <div className=" col-lg-6 inputlevels">
@@ -41,9 +32,6 @@ const Form = () => {
               placeholder="Enter your url"
               className="form-control"
               name="image"
-              onChange={(e) => {
-                setImage(e.target.files[0]);
-              }}
             />
             <br />
             <label className="subheading">Comments</label>
@@ -55,11 +43,7 @@ const Form = () => {
               ></textarea>
               <label for="floatingTextarea2">Comments</label>
             </div>
-            <button
-              className="btn btn-success btn-lg mt-3"
-              type="submit"
-              onClick={upload}
-            >
+            <button className="btn btn-success btn-lg mt-3" type="submit">
               Post
             </button>
           </div>
