@@ -46,7 +46,7 @@ const Login = () => {
 
     onSubmit: async (values) => {
       var user = await axios
-        .get("http://localhost:8001/userslist")
+        .get("https://dairy-memory.herokuapp.com/userslist")
         .then((res) => {
           return res.data;
         });

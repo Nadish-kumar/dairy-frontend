@@ -47,7 +47,7 @@ const Sign = () => {
     onSubmit: async (values) => {
       setvalues(values);
       var user = await axios
-        .get("http://localhost:8001/userslist")
+        .get("https://dairy-memory.herokuapp.com/userslist")
         .then((res) => {
           return res.data;
         });
@@ -82,7 +82,7 @@ const Sign = () => {
       .then(async (result) => {
         alert("success");
         var usercreate = await axios
-          .post("http://localhost:8001/usersadded", userdata)
+          .post("https://dairy-memory.herokuapp.com/usersadded", userdata)
           .then((res) => {
             return res.data;
           });

@@ -57,7 +57,7 @@ const Dashboard = () => {
   date: Date,
 }
 console.log(data)
-var response = await axios.post("http://localhost:8001/form",data).then((res) => { return res.data})
+var response = await axios.post("https://dairy-memory.herokuapp.com/form",data).then((res) => { return res.data})
 console.log(response)
 setOpen(false)
 window.location.reload()
@@ -89,7 +89,7 @@ const getalldata = async() => {
     userid: id
   }
   console.log(Id)
-  var data = await axios.post("http://localhost:8001/cards",Id ).then((res) => { return res.data})
+  var data = await axios.post("https://dairy-memory.herokuapp.com/cards",Id ).then((res) => { return res.data})
   console.log(data)
   setcards(data)
 }
