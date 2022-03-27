@@ -18,3 +18,36 @@
   font-weight: 500;
   margin-bottom: 10px;
 }
+.otp__button {
+  color: green;
+}
+.otp__header {
+  font-weight: 600 !important;
+  font-size: 25px !important;
+
+  color: #777778;
+  margin-top: 40px !important;
+}
+.otp__number {
+  margin-top: 30px !important;
+}
+.otp__subheading {
+  margin-top: 30px !important;
+  font-size: 22px !important;
+  font-weight: 400;
+  color: #ceced1;
+}
+.otp__subheading span {
+  color: #777778;
+}
+.otp__button {
+  background-color: #444bd3 !important;
+  color: white !important;
+  padding: 12px 40px !important;
+  margin-top: 40px !important;
+  font-size: 18px !important;
+  border-radius: 10px !important;
+}
+.otp__recaptch {
+  margin-top: 25px !important;
+}
