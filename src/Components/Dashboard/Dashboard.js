@@ -57,7 +57,7 @@ const Dashboard = () => {
   date: Date,
 }
 console.log(data)
-var response = await axios.post("https://dairy-coder.herokuapp.com/list",data).then((res) => { return res.data})
+var response = await axios.post("http://localhost:8001/list",data).then((res) => { return res.data})
 console.log(response)
 setOpen(false)
 window.location.reload()
@@ -92,6 +92,16 @@ const getalldata = async() => {
   var data = await axios.post("https://dairy-coder.herokuapp.com/cards",Id ).then((res) => { return res.data})
   console.log(data)
   setcards(data)
+}
+
+const deletepost = async() => {
+  var id = document.getElementById("objId").value
+  var rubber = {
+    _id:id
+  }
+ 
+  var rubdata = await axios.post("https://dairy-coder.herokuapp.com/like",rubber).then((res) => { return res.data})
+ window.location.reload()
 }
 
 const logout = () => {
@@ -242,6 +252,7 @@ const logout = () => {
   <a  class="btn btn-primary">
     {items.date}
   </a>
+  <button className="btn btn-danger" onClick={deletepost} value={items._id} id="objId">Delete</button>
 </div>
 </div>
   </div>
