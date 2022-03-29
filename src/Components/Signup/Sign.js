@@ -47,7 +47,7 @@ const Sign = () => {
     onSubmit: async (values) => {
       setvalues(values);
       var user = await axios
-        .get("https://dairy-memory.herokuapp.com/userslist")
+        .get("https://dairy-coder.herokuapp.com/userslist")
         .then((res) => {
           return res.data;
         });
@@ -82,7 +82,7 @@ const Sign = () => {
       .then(async (result) => {
         alert("success");
         var usercreate = await axios
-          .post("https://dairy-memory.herokuapp.com/usersadded", userdata)
+          .post("https://dairy-coder.herokuapp.com/usersadded", userdata)
           .then((res) => {
             return res.data;
           });
@@ -194,3 +194,4 @@ const Sign = () => {
 };
 
 export default Sign;
+// https://dairy-memory.herokuapp.com
