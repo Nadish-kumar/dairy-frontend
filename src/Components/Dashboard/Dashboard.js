@@ -57,7 +57,7 @@ const Dashboard = () => {
   date: Date,
 }
 console.log(data)
-var response = await axios.post("https://dairy-coder.herokuapp.com/form",data).then((res) => { return res.data})
+var response = await axios.post("https://dairy-coder.herokuapp.com/list",data).then((res) => { return res.data})
 console.log(response)
 setOpen(false)
 window.location.reload()
