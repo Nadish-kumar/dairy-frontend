@@ -60,7 +60,7 @@ console.log(data)
 var response = await axios.post("https://dairy-coder.herokuapp.com/list",data).then((res) => { return res.data})
 console.log(response)
 setOpen(false)
-window.location.reload()
+// window.location.reload()
 }
 
 
@@ -101,7 +101,7 @@ const deletepost = async() => {
   }
  
   var rubdata = await axios.post("https://dairy-coder.herokuapp.com/like",rubber).then((res) => { return res.data})
- window.location.reload()
+//  window.location.reload()
 }
 
 const logout = () => {
