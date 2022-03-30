@@ -9,6 +9,7 @@ import axios from "axios"
 import {useEffect } from "react"
 import {useNavigate } from "react-router-dom"
 import moment from "moment"
+import {Link } from "react-router-dom"
 
 const style = {
   position: "absolute",
@@ -41,50 +42,12 @@ const Dashboard = () => {
   }, [])
   
 
-  const postform = async() => {
-  var Title = document.getElementById("title").value
-  var Des = document.getElementById("desc").value
-  var Date = document.getElementById("date").value
-  var id = sessionStorage.getItem("userid")
-  
-  console.log(id)
-  console.log(imageurl)
-
-  var data = {
-    title: Title,
-   userid:id,
-   image:imageurl,
-  desc: Des,
-  date:Date
-}
-console.log(data)
-var response = await axios.post("https://dairy-coder.herokuapp.com/list",data).then((res) => { return res.data})
-console.log(response)
-setOpen(false)
-window.location.reload()
-}
 
 
 
 
 
-const getimgaeurl = async () => {
-  var file = document.getElementById("image").files;
-  let file11 = new Promise((resolve, reject) => {
-    var storageRef = firebase.storage().ref("profile/" + file[0].name);
-    storageRef.put(file[0]).then(function (snapshot) {
-      storageRef.getDownloadURL().then(function (url) {
-        //img download link ah ketakiradhu
-        setTimeout(() => resolve(url), 1000);
-      });
-    });
-  });
-  var imgurl = await file11;
-  console.log(imgurl)
-  setimageurl(imgurl);
- 
-};
-console.log(imageurl)
+
 
 const getalldata = async() => {
   var id = sessionStorage.getItem("userid")
@@ -105,7 +68,7 @@ const deletepost = async() => {
   }
  
   var rubdata = await axios.post("https://dairy-coder.herokuapp.com/like",rubber).then((res) => { return res.data})
- window.location.reload()
+ getalldata()
 }
 
 const logout = () => {
@@ -123,31 +86,31 @@ const logout = () => {
       <li class="nav-item">
         <a href="#" class="nav-link active" aria-current="page">
           <svg class="bi me-2" width="16" height="16"><use ></use></svg>
-          Home
-        </a>
-      </li>
-      <li>
-        <a href="#" class="nav-link link-dark">
-          <svg class="bi me-2" width="16" height="16"><use></use></svg>
           Dashboard
         </a>
       </li>
       <li>
         <a href="#" class="nav-link link-dark">
           <svg class="bi me-2" width="16" height="16"><use></use></svg>
-          Orders
+          
+        </a>
+      </li>
+      <li>
+        <a href="#" class="nav-link link-dark">
+          <svg class="bi me-2" width="16" height="16"><use></use></svg>
+
         </a>
       </li>
       <li>
         <a href="#" class="nav-link link-dark">
           <svg class="bi me-2" width="16" height="16"><use ></use></svg>
-          Products
+          
         </a>
       </li>
       <li>
         <a href="#" class="nav-link link-dark">
           <svg class="bi me-2" width="16" height="16"><use ></use></svg>
-          Customers
+          
         </a>
       </li>
     </ul>
@@ -170,7 +133,9 @@ const logout = () => {
           <div className="col-md-10">
             <div className="row">
               <div className="col-md-4">
+                <Link to="/form">
           <button className="btn btn-success btn-lg mt-4 mb-3" onClick={handleOpen}>+ Add Memories</button>
+          </Link>
           <div>
                 <Modal
                   open={open}
@@ -188,56 +153,11 @@ const logout = () => {
       <div className="row inputboxes">
           <div className="col-lg-3"></div>
           <div className=" col-lg-6 inputlevels">
-            <label className="subheading">Title</label>
-            <input
-              type="text"
-              placeholder="Enter your title"
-              className="form-control"
-              name="title"
-              id="title"
-            ></input>
-            <br />
-            <label className="subheading">Image</label>
-            <div className="input-group">
-              <input
-                type="file"
-                placeholder="Enter your url"
-                className="form-control"
-                name="image"
-                id="image"
-                onChange={getimgaeurl}
-              />
-             
-            </div>
-            <br />
-            <label className="subheading">Comments</label>
-            <div class="form-floating">
-              <textarea
-                class="form-control"
-                placeholder="Leave a comment here"
-                id="desc"
-              ></textarea>
-              <label for="floatingTextarea2">Comments</label>
-            </div>
-            <label  className="subheading">Date</label>
-            <div class="form-floating">
-              <input type="date" id="date" class="form-control"/>
-            </div>
-     {
-       imageurl === null ?        <button
-       className="btn btn-success btn-lg mt-3 " disabled
-       type="submit"
-       onClick={postform}
-     >
-       Post
-     </button> :        <button
-              className="btn btn-success btn-lg mt-3"
-              type="submit"
-              onClick={postform}
-            >
-              Post
-            </button>
-     }
+       
+          
+        
+        
+
           </div>
         
         </div>

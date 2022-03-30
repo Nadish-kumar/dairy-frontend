@@ -16,16 +16,20 @@
   }
   .card__design{
     
-    height: 400px;
-    width:400px
+    height: 300px;
+   object-fit: contain;
     }
     .card__text{
       
-        overflow: hidden;
-        text-overflow: ellipsis;
-        display: -webkit-box;
-        -webkit-line-clamp: 1; 
-                line-clamp: 1; 
-        -webkit-box-orient: vertical;
+
      
+    }
+    .ref__heading{
+      text-align: center;
+      font-size: 30px;
+      font-weight: 600;
+      margin-top: 25[x];
+    }
+    .bwt{
+      width: 100%;
     }
