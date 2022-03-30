@@ -8,6 +8,7 @@ import { Typography, Box, TextField, Button } from "@material-ui/core";
 import axios from "axios"
 import {useEffect } from "react"
 import {useNavigate } from "react-router-dom"
+import moment from "moment"
 
 const style = {
   position: "absolute",
@@ -54,13 +55,13 @@ const Dashboard = () => {
    userid:id,
    image:imageurl,
   desc: Des,
-  date: Date,
+  date:Date
 }
 console.log(data)
 var response = await axios.post("https://dairy-coder.herokuapp.com/list",data).then((res) => { return res.data})
 console.log(response)
 setOpen(false)
-// window.location.reload()
+window.location.reload()
 }
 
 
@@ -79,8 +80,11 @@ const getimgaeurl = async () => {
     });
   });
   var imgurl = await file11;
+  console.log(imgurl)
   setimageurl(imgurl);
+ 
 };
+console.log(imageurl)
 
 const getalldata = async() => {
   var id = sessionStorage.getItem("userid")
@@ -101,7 +105,7 @@ const deletepost = async() => {
   }
  
   var rubdata = await axios.post("https://dairy-coder.herokuapp.com/like",rubber).then((res) => { return res.data})
-//  window.location.reload()
+ window.location.reload()
 }
 
 const logout = () => {
@@ -219,13 +223,21 @@ const logout = () => {
             <div class="form-floating">
               <input type="date" id="date" class="form-control"/>
             </div>
-            <button
+     {
+       imageurl === null ?        <button
+       className="btn btn-success btn-lg mt-3 " disabled
+       type="submit"
+       onClick={postform}
+     >
+       Post
+     </button> :        <button
               className="btn btn-success btn-lg mt-3"
               type="submit"
               onClick={postform}
             >
               Post
             </button>
+     }
           </div>
         
         </div>
@@ -241,16 +253,16 @@ const logout = () => {
             { cards !== null ? (
  cards.map((items,index) => (
         
-  <div className="col-md-4"key={index}>
+  <div className="col-md-3"key={index}>
   <div class="card">
 <img src={items.image} class="card-img-top card__design" alt="..." />
 <div class="card-body">
   <h5 class="card-title">{items.title}</h5>
-  <p class="card-text">
+  <p class="card__text">
    {items.desc}
   </p>
   <a  class="btn btn-primary">
-    {items.date}
+    {moment(items.date).format('MMM Do YY')}
   </a>
   <button className="btn btn-danger" onClick={deletepost} value={items._id} id="objId">Delete</button>
 </div>

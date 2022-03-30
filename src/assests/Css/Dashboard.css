@@ -15,6 +15,17 @@
     height: 100vh;
   }
   .card__design{
-    object-fit: contain;
-    height: 500px;
+    
+    height: 400px;
+    width:400px
+    }
+    .card__text{
+      
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 1; 
+                line-clamp: 1; 
+        -webkit-box-orient: vertical;
+     
     }
